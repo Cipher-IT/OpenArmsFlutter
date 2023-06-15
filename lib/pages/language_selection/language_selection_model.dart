@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,6 +19,10 @@ class LanguageSelectionModel extends FlutterFlowModel {
   // State field(s) for DropDown widget.
   int? dropDownValue;
   FormFieldController<int>? dropDownValueController;
+  // Stores action output result for [Custom Action - newUser] action in Container widget.
+  dynamic? newUser;
+  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  UsersRow? newUserOutput;
 
   /// Initialization and disposal methods.
 

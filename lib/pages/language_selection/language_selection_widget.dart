@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -150,60 +151,110 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
                         );
                       },
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                      child: Container(
-                        width: 116.0,
-                        height: 32.0,
-                        constraints: BoxConstraints(
-                          maxHeight: 32.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 4.0,
-                              color: Color(0x32171717),
-                              offset: Offset(0.0, 2.0),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.lock_open_outlined,
-                                color: Colors.white,
-                                size: 20.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ylx33xsw' /* Login */,
+                    if (_model.dropDownValue != null)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            _model.newUser = await actions.newUser();
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (getJsonField(
+                                  _model.newUser,
+                                  r'''$.password''',
+                                ).toString() !=
+                                getJsonField(
+                                  _model.newUser,
+                                  r'''$.password''',
+                                ).toString()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Passwords don\'t match!',
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Colors.white,
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.normal,
-                                      ),
                                 ),
-                              ),
-                            ],
+                              );
+                              return;
+                            }
+
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              getJsonField(
+                                _model.newUser,
+                                r'''$.email''',
+                              ).toString(),
+                              getJsonField(
+                                _model.newUser,
+                                r'''$.password''',
+                              ).toString(),
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            _model.newUserOutput = await UsersTable().insert({
+                              'email': currentUserEmail,
+                              'language_id': _model.dropDownValue,
+                              'uuid': currentUserUid,
+                            });
+
+                            context.goNamedAuth('HomePage', context.mounted);
+
+                            setState(() {});
+                          },
+                          child: Container(
+                            width: 116.0,
+                            height: 32.0,
+                            constraints: BoxConstraints(
+                              maxHeight: 32.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4.0,
+                                  color: Color(0x32171717),
+                                  offset: Offset(0.0, 2.0),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.lock_open_outlined,
+                                  color: Colors.white,
+                                  size: 20.0,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'ylx33xsw' /* Login */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Colors.white,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
