@@ -123,15 +123,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قم بالتبديل إلى وضع الإضاءة',
       'de': 'Wechseln Sie in den Lichtmodus',
     },
-    'a13rb3ap': {
-      'en': 'Button',
-      'ar': 'زر',
-      'de': 'Taste',
-    },
-    '1lgz5yw3': {
-      'en': 'Start a new Thread',
-      'ar': 'بدء موضوع جديد',
-      'de': 'Starten Sie einen neuen Thread',
+    'di1f7cv0': {
+      'en': 'Sign Out',
+      'ar': 'خروج',
+      'de': 'Austragen',
     },
     'w4r0mufi': {
       'en': 'Home',
@@ -151,10 +146,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'البحث عن عنصر ...',
       'de': 'Nach einem Artikel suchen...',
     },
-    'a13rb3ap': {
-      'en': 'Button',
-      'ar': 'زر',
-      'de': 'Taste',
+    'ylx33xsw': {
+      'en': 'Login',
+      'ar': 'تسجيل الدخول',
+      'de': 'Anmeldung',
     },
     'c8loz2fg': {
       'en': 'Home',
@@ -200,9 +195,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Nach einem Artikel suchen...',
     },
     'a13rb3ap': {
-      'en': 'Button',
-      'ar': 'زر',
-      'de': 'Taste',
+      'en': 'Image Upload',
+      'ar': 'خروج',
+      'de': 'Austragen',
+    },
+    'b363ucdi': {
+      'en': 'Upload pdf',
+      'ar': 'تحميل الصور',
+      'de': 'Bild hochladen',
+    },
+    'e83kkfe7': {
+      'en': 'Start',
+      'ar': 'بدأ',
+      'de': 'Start',
     },
     'ye8328rs': {
       'en': 'New Thread',
@@ -211,7 +216,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'k37otuq8': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
       'de': 'Heim',
     },
   },
@@ -226,6 +231,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'ar': 'بيت',
       'de': 'Heim',
+    },
+  },
+  // StartThread
+  {
+    'cn5j1oay': {
+      'en': 'Start a new Thread',
+      'ar': 'بدء موضوع جديد',
+      'de': 'Starten Sie einen neuen Thread',
+    },
+  },
+  // EmptyChat
+  {
+    'xc7iqeki': {
+      'en': 'Seems you don’t have\n any messages',
+      'ar': 'يبدو أنه ليس لديك أي رسائل',
+      'de': 'Anscheinend haben Sie keine Nachrichten',
+    },
+    'jyf6wwy9': {
+      'en': 'Start messaging now',
+      'ar': 'ابدأ المراسلة الآن',
+      'de': 'Beginnen Sie jetzt mit dem Versenden von Nachrichten',
+    },
+  },
+  // HoldOnImThinking
+  {
+    '02tfhv7y': {
+      'en': 'Hold On, ',
+      'ar': '',
+      'de': '',
+    },
+    '7rmb09nx': {
+      'en': 'I\'m Thinking',
+      'ar': '',
+      'de': '',
     },
   },
   // Miscellaneous

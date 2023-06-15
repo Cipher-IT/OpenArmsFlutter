@@ -60,14 +60,19 @@ class _AssistantResponseWidgetState extends State<AssistantResponseWidget> {
             topRight: Radius.circular(25.0),
           ),
         ),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-          child: Text(
-            widget.text!,
-            style: FlutterFlowTheme.of(context).titleMedium.override(
-                  fontFamily: 'Readex Pro',
-                  fontSize: 16.0,
-                ),
+        child: Align(
+          alignment: AlignmentDirectional(-1.0, 0.0),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+            child: SelectionArea(
+                child: Text(
+              widget.text!,
+              textAlign: TextAlign.start,
+              style: FlutterFlowTheme.of(context).titleMedium.override(
+                    fontFamily: 'Readex Pro',
+                    fontSize: 16.0,
+                  ),
+            )),
           ),
         ),
       ),

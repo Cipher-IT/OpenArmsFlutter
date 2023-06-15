@@ -9,7 +9,7 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class StartThreadCall {
+class StartChatThreadCall {
   static Future<ApiCallResponse> call({
     String? content = '',
     String? token = '',
@@ -19,11 +19,69 @@ class StartThreadCall {
   "content": "${content}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'StartThread',
-      apiUrl: 'https://openarms.cipher.ly/api/start-thread',
+      callName: 'StartChatThread',
+      apiUrl: 'https://openarms-api.cipher.ly/api/start-thread',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class StartFileThreadCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? fileId = '',
+    String? languageId = '',
+  }) {
+    final body = '''
+{
+  "file_id": "${fileId}",
+  "language_id": "${languageId}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'StartFileThread',
+      apiUrl: 'https://openarms-api.cipher.ly/api/start-thread',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: body,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class NewThreadMessageCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? content = '',
+    String? threadId = '',
+  }) {
+    final body = '''
+{
+  "thread_id": "${threadId}",
+  "content": "${content}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'NewThreadMessage',
+      apiUrl: 'https://openarms-api.cipher.ly/api/new-thread-message',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': '${token}',
       },
       params: {},
       body: body,

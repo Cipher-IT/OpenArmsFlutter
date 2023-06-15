@@ -81,66 +81,79 @@ class _ThreadCardWidgetState extends State<ThreadCardWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      width: 230.0,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primary,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 4.0,
-            color: Color(0x34090F13),
-            offset: Offset(0.0, 2.0),
-          )
-        ],
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 140.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).tertiary,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(0.0),
-                  bottomRight: Radius.circular(0.0),
-                  topLeft: Radius.circular(12.0),
-                  topRight: Radius.circular(12.0),
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.title!,
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily: 'Readex Pro',
-                            color: Colors.white,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 0.0),
-              child: Text(
-                widget.timestamp!,
-                textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).bodyMedium,
-              ),
-            ),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+      child: Container(
+        width: 230.0,
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).primary,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 4.0,
+              color: Color(0x34090F13),
+              offset: Offset(0.0, 2.0),
+            )
           ],
+          borderRadius: BorderRadius.circular(12.0),
         ),
-      ),
-    ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!);
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 140.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).tertiary,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(0.0),
+                    bottomRight: Radius.circular(0.0),
+                    topLeft: Radius.circular(12.0),
+                    topRight: Radius.circular(12.0),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.title!.maybeHandleOverflow(
+                          maxChars: 250,
+                          replacement: '…',
+                        ),
+                        maxLines: 5,
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 0.0),
+                child: Text(
+                  widget.timestamp!,
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).info,
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+    );
   }
 }

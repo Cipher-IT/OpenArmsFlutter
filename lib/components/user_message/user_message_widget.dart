@@ -63,6 +63,7 @@ class _UserMessageWidgetState extends State<UserMessageWidget> {
           padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
           child: Text(
             widget.text!,
+            textAlign: TextAlign.end,
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Readex Pro',
                   fontSize: 16.0,

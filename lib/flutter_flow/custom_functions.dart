@@ -28,7 +28,3 @@ String randomPasswordGenerator() {
       length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
   return randomString;
 }
-
-String getAuthenticatedUserJWT() {
-  return '';
-}

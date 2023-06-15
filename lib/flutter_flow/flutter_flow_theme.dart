@@ -131,13 +131,13 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFFA82835);
+  late Color primary = const Color(0xFFFA384B);
   late Color secondary = const Color(0xFFAB5155);
   late Color tertiary = const Color(0xFF1E4460);
   late Color alternate = const Color(0xFF8948AF);
   late Color primaryText = const Color(0xFF14181B);
   late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFE8E0C8);
+  late Color primaryBackground = const Color(0xFFFFFFFF);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color accent1 = const Color(0x4C4B39EF);
   late Color accent2 = const Color(0x4D39D2C0);
@@ -308,14 +308,14 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFFA82835);
+  late Color primary = const Color(0xFFFA384B);
   late Color secondary = const Color(0xFFAB5155);
-  late Color tertiary = const Color(0xFF1E4460);
+  late Color tertiary = const Color(0xFF427FAC);
   late Color alternate = const Color(0xFF262D34);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFFE8E0C8);
   late Color primaryBackground = const Color(0xFF1D2428);
-  late Color secondaryBackground = const Color(0xFF1E4460);
+  late Color secondaryBackground = const Color(0xFF0B4B75);
   late Color accent1 = const Color(0x4C4B39EF);
   late Color accent2 = const Color(0x4D39D2C0);
   late Color accent3 = const Color(0x4DEE8B60);

@@ -28,12 +28,6 @@ class FFAppState extends ChangeNotifier {
     _threadId = _value;
   }
 
-  String _threadTitle = '';
-  String get threadTitle => _threadTitle;
-  set threadTitle(String _value) {
-    _threadTitle = _value;
-  }
-
   final _getLanguagesManager = FutureRequestManager<List<LanguagesRow>>();
   Future<List<LanguagesRow>> getLanguages({
     String? uniqueQueryKey,

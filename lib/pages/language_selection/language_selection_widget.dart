@@ -1,9 +1,7 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
@@ -65,173 +63,152 @@ class _LanguageSelectionWidgetState extends State<LanguageSelectionWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 1.0,
-            height: MediaQuery.of(context).size.height * 1.0,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FutureBuilder<List<LanguagesRow>>(
-                  future: FFAppState().getLanguages(
-                    requestFn: () => LanguagesTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'visible',
-                        true,
-                      ),
-                    ),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primary,
+    return Title(
+        title: 'LanguageSelection',
+        color: FlutterFlowTheme.of(context).primary,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
+              top: true,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 1.0,
+                height: MediaQuery.of(context).size.height * 1.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FutureBuilder<List<LanguagesRow>>(
+                      future: FFAppState().getLanguages(
+                        requestFn: () => LanguagesTable().queryRows(
+                          queryFn: (q) => q.eq(
+                            'visible',
+                            true,
                           ),
                         ),
-                      );
-                    }
-                    List<LanguagesRow> dropDownLanguagesRowList =
-                        snapshot.data!;
-                    return FlutterFlowDropDown<int>(
-                      controller: _model.dropDownValueController ??=
-                          FormFieldController<int>(
-                        _model.dropDownValue ??= 0,
                       ),
-                      options:
-                          dropDownLanguagesRowList.map((e) => e.id).toList(),
-                      optionLabels: dropDownLanguagesRowList
-                          .map((e) => e.writtenName)
-                          .withoutNulls
-                          .toList(),
-                      onChanged: (val) =>
-                          setState(() => _model.dropDownValue = val),
-                      width: 300.0,
-                      height: 50.0,
-                      searchHintTextStyle:
-                          FlutterFlowTheme.of(context).labelMedium,
-                      textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                      hintText: FFLocalizations.of(context).getText(
-                        'xit497ay' /* Please select... */,
-                      ),
-                      searchHintText: FFLocalizations.of(context).getText(
-                        '27xvnsqs' /* Search for an item... */,
-                      ),
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
-                      ),
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 2.0,
-                      borderColor: FlutterFlowTheme.of(context).alternate,
-                      borderWidth: 2.0,
-                      borderRadius: 25.0,
-                      margin:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
-                      hidesUnderline: true,
-                      isSearchable: true,
-                    );
-                  },
-                ),
-                if (_model.dropDownValue != null)
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 16.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          _model.newUser = await actions.newUser();
-                          GoRouter.of(context).prepareAuthEvent();
-                          if (getJsonField(
-                                _model.newUser,
-                                r'''$.password''',
-                              ).toString() !=
-                              getJsonField(
-                                _model.newUser,
-                                r'''$.password''',
-                              ).toString()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Passwords don\'t match!',
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          );
+                        }
+                        List<LanguagesRow> dropDownLanguagesRowList =
+                            snapshot.data!;
+                        return FlutterFlowDropDown<int>(
+                          controller: _model.dropDownValueController ??=
+                              FormFieldController<int>(
+                            _model.dropDownValue ??= 0,
+                          ),
+                          options: dropDownLanguagesRowList
+                              .map((e) => e.id)
+                              .toList(),
+                          optionLabels: dropDownLanguagesRowList
+                              .map((e) => e.writtenName)
+                              .withoutNulls
+                              .toList(),
+                          onChanged: (val) =>
+                              setState(() => _model.dropDownValue = val),
+                          width: 300.0,
+                          height: 50.0,
+                          searchHintTextStyle:
+                              FlutterFlowTheme.of(context).labelMedium,
+                          textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          hintText: FFLocalizations.of(context).getText(
+                            'xit497ay' /* Please select... */,
+                          ),
+                          searchHintText: FFLocalizations.of(context).getText(
+                            '27xvnsqs' /* Search for an item... */,
+                          ),
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2.0,
+                          borderColor: FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 25.0,
+                          margin: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 4.0, 16.0, 4.0),
+                          hidesUnderline: true,
+                          isSearchable: true,
+                        );
+                      },
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      child: Container(
+                        width: 116.0,
+                        height: 32.0,
+                        constraints: BoxConstraints(
+                          maxHeight: 32.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primary,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x32171717),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.lock_open_outlined,
+                                color: Colors.white,
+                                size: 20.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ylx33xsw' /* Login */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Colors.white,
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                 ),
                               ),
-                            );
-                            return;
-                          }
-
-                          final user = await authManager.createAccountWithEmail(
-                            context,
-                            getJsonField(
-                              _model.newUser,
-                              r'''$.email''',
-                            ).toString(),
-                            getJsonField(
-                              _model.newUser,
-                              r'''$.password''',
-                            ).toString(),
-                          );
-                          if (user == null) {
-                            return;
-                          }
-
-                          _model.newUserOutput = await UsersTable().insert({
-                            'email': currentUserEmail,
-                            'language_id': _model.dropDownValue,
-                            'uuid': currentUserUid,
-                          });
-
-                          context.goNamedAuth('HomePage', context.mounted);
-
-                          setState(() {});
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'a13rb3ap' /* Button */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 120.0,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                            ],
                           ),
-                          borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
